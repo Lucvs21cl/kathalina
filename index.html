@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lover of Mine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <audio id="background-music" loop>
+        <source src="drake.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-item">home</div>
+            <div class="nav-divider">|</div>
+            <div class="nav-item">OUR LOVE STORY</div>
+            <div class="nav-divider">|</div>
+            <div class="nav-item">NEXT PAGE</div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Title Section -->
+        <section class="title-section">
+            <h1 class="main-title">
+                <span class="script-text">Good night,</span>
+                <span class="caps-text">DARLING</span>
+            </h1>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-section">
+            <video class="main-video" autoplay muted loop playsinline>
+                <source src="katha.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </section>
+
+        <!-- About Us Section -->
+        <section class="about-section">
+            <div class="about-content">
+                <div class="about-right">
+                    <h3 class="about-title">QUIERO ESTAR MÁS QUE SOLO EN LO BUENO</h3>
+                    <p class="about-text">
+                        Mi amor yo no le ruego a nadie, pero a ti lo que sea necesario, mañana dame un besito y nos vemos el día viernes en una salida bonita, no faltes.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Section -->
+        <section class="bottom-section">
+            <div class="bottom-divider"></div>
+            <div class="bottom-content">
+                <!-- Left Column - Playlist -->
+                <div class="playlist-section">
+                    <div class="playlist-header">
+                        <h3 class="playlist-title">CANCIONES QUE SUENAN EN MI CABEZA CUANDO TE VEO</h3>
+                        <span class="playlist-nav">NEXT ></span>
+                    </div>
+                    <ol class="playlist">
+                        <li class="playlist-item">CARITA DE BUENA DE EFECTO PASILLO</li>
+                        <li class="playlist-item">UN VERANO EN MALLORCA DE RELS B</li>
+                        <li class="playlist-item">THOSE EYES NEW WEST</li>
+                    </ol>
+                    <div class="heart-image">
+                        <img src="cora.jpg" alt="Corazón" class="heart-img">
+                    </div>
+                </div>
+
+                <!-- Right Column - Now Playing -->
+                <div class="now-playing-section">
+                    <h3 class="now-playing-title">AHORA ESTÁ SONANDO YEBBA'S HEARTBREAK</h3>
+                    <div class="lyrics">
+                        <p class="lyric-line">How much better can I show my love for you</p>
+                        <p class="lyric-line">Than say "I do, I do, I do"?</p>
+                        <p class="lyric-line">I do, I do, I do</p>
+                        <p class="lyric-line">You may not know right where you're going, but</p>
+                        <p class="lyric-line">I do, I do, I do</p>
+                        <p class="lyric-line">And all the times you wasn't chosen, well, I'll make it up to you</p>
+                        <p class="lyric-line">All of the feelings you're not showing</p>
+                        <p class="lyric-line">When your river's overflowing, mmm</p>
+                        <p class="lyric-line">It's the truth, swear to you</p>
+                        <p class="lyric-line">I do, I do, I do, I do, I do</p>
+                        <p class="lyric-line">And all that you are, I do</p>
+                        <p class="lyric-line">My single line of stars in noon</p>
+                        <p class="lyric-line">Reflection of the very moon, I do</p>
+                        <p class="lyric-line">I do, I do, I do</p>
+                        <p class="lyric-line">Show my love for you</p>
+                        <p class="lyric-line">Can I show my love for you?</p>
+                        <p class="lyric-line">(Can I show my love for you?)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // Reproducir música de fondo automáticamente
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('background-music');
+            audio.volume = 0.3; // Volumen bajo para no ser molesto
+            
+            // Intentar reproducir automáticamente
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    console.log('Música reproduciéndose automáticamente');
+                }).catch(function(error) {
+                    console.log('Autoplay bloqueado, se requiere interacción del usuario');
+                    // Mostrar mensaje para que el usuario haga clic
+                    showPlayButton();
+                });
+            }
+        });
+        
+        // Función para mostrar botón de play si el autoplay falla
+        function showPlayButton() {
+            const playButton = document.createElement('button');
+            playButton.innerHTML = '🎵 Reproducir Música';
+            playButton.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #000;
+                color: #f8f5f1;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-family: 'Helvetica', Arial, sans-serif;
+                font-size: 12px;
+                z-index: 1000;
+            `;
+            
+            playButton.addEventListener('click', function() {
+                const audio = document.getElementById('background-music');
+                audio.play();
+                playButton.remove();
+            });
+            
+            document.body.appendChild(playButton);
+        }
+        
+        // También reproducir cuando el usuario haga clic en cualquier parte
+        document.addEventListener('click', function() {
+            const audio = document.getElementById('background-music');
+            if (audio.paused) {
+                audio.play();
+            }
+        });
+    </script>
+</body>
+</html>
